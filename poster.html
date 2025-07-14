@@ -1,395 +1,418 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8"/>
-        <title>IC2S2 2025 Poster · Tianyi Zhang</title>
-        <style>
-            /* Google Fonts */
-            @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600&display=swap'); @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap'); /* ----------  Chicago‑Maroon Theme  ---------- */
-            :root {
-                --bg: #fdfcfa;
-                --maroon: #800000;
-                --maroon-light: #9c1f1f;
-                --maroon-dark: #5e0000;
-                --gray: #444;
-                --card-bg: #fcf8f6;
-                --radius: 14px;
-                --shadow: 0 6px 14px rgba(202, 202, 202);
-            }
 
-            html {
-                font-size: 38px;
-            }
+<head>
+  <meta charset="UTF-8" />
+  <title>IC2S2 2025 Poster · Tianyi Zhang</title>
+  <style>
+    /* Google Fonts */
+    @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
 
-            body {
-                width: 36in;
-                height: 24in;
-                margin: 0;
-                padding: 0;
-                background: var(--bg);
-            }
+    /* ----------  Chicago-Maroon Theme  ---------- */
+    :root {
+      --bg: #fdfcfa;
+      --maroon: #800000;
+      --maroon-light: #9c1f1f;
+      --maroon-dark: #5e0000;
+      --gray: #444;
+      --card-bg: #fcf8f6;
+      --radius: 14px;
+      --shadow: 0 6px 14px rgba(202, 202, 202);
+    }
 
-            .highlight {
-                color: var(--maroon-light);
-                font-weight: 600;
-            }
+    html {
+      font-size: 38px;
+    }
 
-            /* ---------- Grid Layout ---------- */
-            main {
-                width: 100%;
-                height: 100%;
-                padding: 1in;
-                box-sizing: border-box;
-                display: grid;
-                grid-template-columns: 1fr 1.2fr 1fr;
-                grid-template-rows: auto repeat(11, 130px) 80px;
-                gap: 0.55rem;
-                font-family: 'EB Garamond', serif;
-                color: var(--gray);
-                border: 3px solid var(--maroon);
-                background: repeating-linear-gradient(135deg, transparent 0 4px, #faf6f4 4px 8px);
-            }
+    body {
+      width: 36in;
+      height: 24in;
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+    }
 
-            /* ---------- Header ---------- */
-            .header {
-                grid-column: 1 / -1;
-                grid-row: 1 / 2;
-                text-align: center;
-                position: relative;
-                padding-bottom: 0.2rem;
-            }
+    .highlight {
+      color: var(--maroon-light);
+      font-weight: 600;
+    }
 
-            .logo {
-                position: absolute;
-                left: 0;
-                top: -8px;
-                height: 245px;
-            }
+    /* ---------- Grid Layout ---------- */
+    main {
+      width: 100%;
+      height: 100%;
+      padding: 1in;
+      box-sizing: border-box;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr 1fr;
+      grid-template-rows: 335px repeat(11, 130px) 80px;
+      gap: 0.55rem;
+      font-family: 'EB Garamond', serif;
+      color: var(--gray);
+      border: 3px solid var(--maroon);
+      background-image: url('bg.png');
+      background-repeat: repeat;
+      background-size: auto;
+    }
 
-            .qr {
-                position: absolute;
-                right: 0;
-                top: 8px;
-                height: 245px;
-            }
+    /* ---------- Header ---------- */
+    .header {
+      grid-column: 1 / -1;
+      grid-row: 1 / 2;
+      text-align: center;
+      position: relative;
+      padding-bottom: 0.2rem;
+    }
 
-            .title {
-                font-size: 2.3rem;
-                color: var(--maroon);
-                font-weight: 600;
-                font-family: 'EB Garamond', serif;
-                letter-spacing: 0.5px;
-            }
+    .logo {
+      position: absolute;
+      left: 0;
+      top: -8px;
+      height: 245px;
+    }
 
-            .authors {
-                font-size: 0.9rem;
-                margin-top: 0.15rem;
-            }
+    .qr {
+      position: absolute;
+      right: 0;
+      top: 8px;
+      height: 245px;
+    }
 
-            /* ---------- Section Placement ---------- */
-            .introduction {
-                grid-column: 1 / 2;
-                grid-row: 2 / 6;
-            }
+    .title {
+      font-size: 2.3rem;
+      color: var(--maroon);
+      font-weight: 600;
+      font-family: 'EB Garamond', serif;
+      letter-spacing: 0.5px;
+    }
 
-            .data {
-                grid-column: 1 / 2;
-                grid-row: 6 / 13;
-            }
+    .authors {
+      font-size: 0.9rem;
+      margin-top: 0.15rem;
+    }
 
-            .results {
-                grid-column: 2 / 3;
-                grid-row: 2 / 13;
-            }
+    /* ---------- Section Placement ---------- */
+    .introduction {
+      grid-column: 1 / 2;
+      grid-row: 2 / 6;
+    }
 
-            .ablation {
-                grid-column: 3 / 4;
-                grid-row: 2 / 6;
-            }
+    .data {
+      grid-column: 1 / 2;
+      grid-row: 6 / 13;
+    }
 
-            .discussion {
-                grid-column: 3 / 4;
-                grid-row: 6 / 11;
-            }
+    .results {
+      grid-column: 2 / 3;
+      grid-row: 2 / 13;
+    }
 
-            .future-work {
-                grid-column: 3 / 4;
-                grid-row: 11 / 13;
-            }
+    .ablation {
+      grid-column: 3 / 4;
+      grid-row: 2 / 6;
+    }
 
-            /* ---------- Sections ---------- */
-            .section {
-                background: var(--card-bg);
-                border-left: 6px solid var(--maroon);
-                border-radius: var(--radius);
-                box-shadow: var(--shadow);
-                padding: 0.55rem 0.65rem;
-                display: flex;
-                flex-direction: column;
-                font-size: 0.78rem;
-            }
+    .discussion {
+      grid-column: 3 / 4;
+      grid-row: 6 / 11;
+    }
 
-            .section h2 {
-                font-family: 'Montserrat', sans-serif;
-                font-size: 1.05rem;
-                color: var(--maroon-dark);
-                margin: 0 0 0.35rem 0;
-                padding-bottom: 0.15rem;
-                border-bottom: 2px solid var(--maroon-light);
-                font-variant-caps: small-caps;
-            }
+    .future-work {
+      grid-column: 3 / 4;
+      grid-row: 11 / 13;
+    }
 
-            .section p {
-                margin: .4rem;
-            }
+    /* ---------- Sections ---------- */
+    .section {
+      background: var(--card-bg);
+      border-left: 6px solid var(--maroon);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 0.55rem 0.65rem;
+      display: flex;
+      flex-direction: column;
+      font-size: 0.78rem;
+    }
 
-            .results h2 {
-                text-align: center;
-            }
+    .section h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.05rem;
+      color: var(--maroon-dark);
+      margin: 0 0 0.35rem 0;
+      padding-bottom: 0.15rem;
+      border-bottom: 2px solid var(--maroon-light);
+      font-variant-caps: small-caps;
+    }
 
-            /* ---------- Figures & Tables ---------- */
-            .figure {
-                max-width: 100%;
-                margin-top: 0.35rem;
-                border: 1px solid #bfbfbf;
-                border-radius: 8px;
-                padding: 0.18rem;
-                background: #fff;
-                object-fit: contain;
-            }
+    .section p {
+      margin: .4rem;
+    }
 
-            .results .figure {
-                height: 7in;
-            }
+    .results h2 {
+      text-align: center;
+    }
 
-            table {
-                width: 100%;
-                border-collapse: collapse;
-                margin-top: 0.4rem;
-                font-size: 0.62rem;
-            }
+    .data ul {
+        margin-top: .5rem;
+    }
 
-            th, td {
-                border: 1px solid #aaa;
-                padding: 0.17rem;
-                text-align: center;
-            }
+    .future-work ul {
+      margin-top: 0.7rem;
+    }
 
-            th {
-                background: var(--maroon-light);
-                color: #fff;
-                font-weight: 600;
-            }
+    /* ---------- Figures & Tables ---------- */
+    .figure {
+      max-width: 100%;
+      margin-top: 0.35rem;
+      border: 1px solid #bfbfbf;
+      border-radius: 8px;
+      padding: 0.18rem;
+      background: #fff;
+      object-fit: contain;
+    }
 
-            tr:nth-child(even) td {
-                background: #f1eaea;
-            }
+    .results .figure {
+      height: 6.9in;
+    }
 
-            caption, .caption {
-                text-align: center;
-                font-size: .8rem;
-                margin-top: .2em;
-                margin-bottom: .1rem;
-            }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.4rem;
+      font-size: 0.62rem;
+    }
 
-            /* ---------- Footer ---------- */
-            .footer {
-                grid-column: 1 / -1;
-                grid-row: 13 / 14;
-                text-align: center;
-                font-size: 0.7rem;
-                color: var(--maroon-dark);
-                font-family: 'Montserrat', sans-serif;
-                padding-top: 0.2rem;
-            }
+    th,
+    td {
+      border: 1px solid #aaa;
+      padding: 0.17rem;
+      text-align: center;
+    }
 
-            a {
-                color: var(--maroon-dark);
-                text-decoration: none;
-            }
-        </style>
-    </head>
-    <body>
-        <main>
-            <!-- Header -->
-            <div class="header">
-                <img src="./uchicago.webp" alt="University of Chicago Shield" class="logo">
-                <img src="./qr-code.png" class="qr">
-                <div class="title">Predicting Foreign Policy Decisions: Network Analysis of</div>
-                <div class="title subtitle">Cold War Leader‑Advisor Interactions</div>
-                <div class="authors">Tianyi Zhang · University of Chicago · IC2S2 2025, Norrköping</div>
-            </div>
-            <!-- Introduction -->
-            <div class="section introduction">
-                <h2>Introduction</h2>
-                <p>
-                    <strong>Why advisers matter ▸</strong>
-                    Foreign-policy scholarship increasingly recognises that outcomes emerge from <em>collective deliberation</em>
-                    , not a single leader’s will.
-                
-                
-                </p>
-                <p>
-                    <strong>Puzzle ▸</strong>
-                    Do patterns of <span class="highlight">agreement (+)</span>
-                    and <span class="highlight">dissent (–)</span>
-                    history amongst meeting participants signal whether the group will endorse a conflictual course of action?
-                
-                
-                </p>
-                <p>
-                    <strong>Contribution ▸</strong>
-                    We transform Cold-War transcripts into signed interaction graphs and train a Graph Attention Network that forecasts conflict with <span style="color:var(--maroon);font-weight:600;">F1 = 0.87</span>
-                    , surpassing tree-based baselines.
-                
-                
-                </p>
-                <p>
-                    <strong>Contribution ▸</strong>
-                    Network structure—who sides with whom—encodes latent power and predicts decisions even when identifying information is removed.
-                
-                
-                </p>
-            </div>
-            <!-- Data -->
-            <div class="section data">
-                <h2>Data & Methodology</h2>
-                <img src="framework.png" alt="GAT Framework" class="figure">
-                <ul>
-                    <li>
-                        <span class="highlight">2 685</span>
-                        declassified meetings (1945‑89) → <span class="highlight">104 k</span>
-                        speech acts
-        
-                    </li>
-                    <li>ChatGPT tags participants, proposals, support, objections, and policy domains</li>
-                    <li>
-                        <span class="highlight">Nodes</span>
-                        represent individual advisors or officials involved in the discussion, while
-            <span class="highlight">Edges</span>
-                        capture the number of previous agreements or disagreements on policy proposals.
-        
-                    </li>
-                </ul>
-            </div>
-            <!-- Results -->
-            <div class="section results">
-                <h2>Results</h2>
-                <!-- Network Image -->
-                <img src="nixon.png" alt="Nixon Adviser Network" class="figure">
-                <!-- Network Description -->
-                <div class="caption">
-                        <strong>Figure 1: </strong>
-                        Interaction network from the Nixon administration.
-                </div>
+    th {
+      background: var(--maroon-light);
+      color: #fff;
+      font-weight: 600;
+    }
 
-                <!-- Model Description -->
-                <p>
-                    To predict whether a meeting would result in a <em>conflictual policy decision</em>
-                    , we constructed
+    tr:nth-child(even) td {
+      background: #f1eaea;
+    }
+
+    caption,
+    .caption {
+      text-align: center;
+      font-size: .8rem;
+      margin-top: .2em;
+      margin-bottom: .1rem;
+    }
+
+    /* ---------- Footer ---------- */
+    .footer {
+      grid-column: 1 / -1;
+      grid-row: 13 / 14;
+      text-align: center;
+      font-size: 0.7rem;
+      color: var(--maroon-dark);
+      font-family: 'Montserrat', sans-serif;
+      padding-top: 0.2rem;
+    }
+
+    a {
+      color: var(--maroon-dark);
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <!-- Header -->
+    <div class="header">
+      <img src="./uchicago.webp" alt="University of Chicago Shield" class="logo">
+      <img src="./qr-code.png" class="qr">
+      <div class="title">Predicting Foreign Policy Decisions: Network Analysis of</div>
+      <div class="title subtitle">Cold War Leader-Advisor Interactions</div>
+      <div class="authors">Tianyi Zhang · University of Chicago · IC2S2 2025, Norrköping</div>
+    </div>
+    <!-- Introduction -->
+    <div class="section introduction">
+      <h2>Introduction</h2>
+      <p>
+        <strong>Why advisers matter ▸</strong>
+        Foreign-policy scholarship increasingly recognises that outcomes emerge from <em>collective deliberation</em>
+        , not a single leader’s will.
+
+
+      </p>
+      <p>
+        <strong>Puzzle ▸</strong>
+        Do patterns of <span class="highlight">agreement (+)</span>
+        and <span class="highlight">dissent (–)</span>
+        history amongst meeting participants signal whether the group will endorse a conflictual course of action?
+
+
+      </p>
+      <p>
+        <strong>Contribution ▸</strong>
+        We transform Cold-War transcripts into signed interaction graphs and train a Graph Attention Network that forecasts conflict with <span style="color:var(--maroon);font-weight:600;">F1 = 0.87</span>
+        , surpassing tree-based baselines.
+
+
+      </p>
+      <p>
+        <strong>Contribution ▸</strong>
+        Network structure—who sides with whom—encodes latent power and predicts decisions even when identifying information is removed.
+
+
+      </p>
+    </div>
+    <!-- Data -->
+    <div class="section data">
+      <h2>Data & Methodology</h2>
+      <img src="framework.png" alt="GAT Framework" class="figure">
+      <div class="caption">
+        <strong>Figure 1: </strong>
+        The data processing pipeline.
+      </div>
+      <ul>
+        <li>
+          <span class="highlight">2 685</span> meetings between 1945-89 & <span class="highlight">104 k</span>
+          speech acts (Jost et al., 2024)
+
+        </li>
+        <li>ChatGPT tags participants, proposals, support, objections, and policy domains</li>
+        <li>
+          <span class="highlight">Nodes</span>
+          represent individual advisors or officials involved in the discussion, while
+        </li>
+        <li>
+          <span class="highlight">Edges</span>
+          capture the number of previous agreements or disagreements between individuals across policy domains.
+        </li>
+      </ul>
+    </div>
+    <!-- Results -->
+    <div class="section results">
+      <h2>Results</h2>
+      <!-- Network Image -->
+      <img src="nixon.png" alt="Nixon Adviser Network" class="figure">
+      <!-- Network Description -->
+      <div class="caption">
+        <strong>Figure 2: </strong>
+        Interaction network from the Nixon administration.
+      </div>
+
+      <!-- Model Description -->
+      <p>
+        To predict whether a meeting would result in a <em>conflictual policy decision</em>
+        , we constructed
         administration-specific interaction networks and applied a <strong>2-layer Graph Attention Network (GAT)</strong>
-                    .
+        .
         Node features included learnable embeddings and departmental affiliations, while edges encoded policy-related
         agreement and disagreement. For each meeting subgraph, we pooled the node embeddings and concatenated them with
         meeting-level features (e.g., number of departments represented, mean hawkishness), which were then passed into
         a linear layer to produce binary outcome predictions.
-      
-                
-                
-                </p>
-                <!-- Performance Table -->
-                <table>
-                    <caption>
-                        <strong>Table 1:</strong>
-                        Model performance comparison on conflictual policy prediction task.
-                    
-                    
-                    </caption>
-                    <thead>
-                        <tr>
-                            <th>Model</th>
-                            <th>F1</th>
-                            <th>Accuracy</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="font-weight:600;color:var(--maroon-dark);">GAT + Metadata</td>
-                            <td><strong>0.8696</strong></td>
-                            <td><strong>0.8734</strong></td>
-                        </tr>
-                        <tr>
-                            <td>GAT (structure-only)</td>
-                            <td>0.8566</td>
-                            <td>0.8603</td>
-                        </tr>
-                        <tr>
-                            <td>Random Forest (metadata)</td>
-                            <td>0.8527</td>
-                            <td>0.8659</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <!-- Result Interpretation -->
-                <p>
-                    The <strong>GAT + Metadata</strong>
-                    model achieved the highest performance, with an F1 score of <strong>0.8696</strong>
-                    and an accuracy of <strong>0.8734</strong>
-                    , outperforming both the structure-only GAT and the metadata-only Random Forest baseline.
-        Incorporating speech-derived edge weights contributed a notable 1.41 percentage point gain in F1 over the structure-only variant,
-        confirming the added predictive value of interaction dynamics in foreign policy decision-making.
-      
-                
-                
-                </p>
-            </div>
-            <!-- Ablation Study -->
-            <div class="section ablation">
-                <h2>Ablation Study</h2>
-                <table>
-                    <caption><strong>Table 2:</strong> ΔF1 by feature removal.</caption>
-                    <tr>
-                        <th>Removed</th>
-                        <th>Δ F1 (pp)</th>
-                    </tr>
-                    <tr>
-                        <td>Meeting metadata</td>
-                        <td>-1.45</td>
-                    </tr>
-                    <tr>
-                        <td>Policy-area edge weights</td>
-                        <td>-0.99</td>
-                    </tr>
-                    <tr>
-                        <td>Agreement/disagreement patterns</td>
-                        <td>-1.42</td>
-                    </tr>
-                    <tr>
-                        <td>Departmental affiliations</td>
-                        <td>-0.82</td>
-                    </tr>
-                </table>
-                <p>The largest drop upon excluding meeting metadata (‑1.45 pp) highlights the critical role of contextual features, while edge weights and interaction patterns also contribute substantially.</p>
-            </div>
-            <div class="section discussion">
-                <h2>Discussion</h2>
-                <p>Our results underscore that relational dynamics among advisors—beyond individual predispositions—are key drivers of foreign-policy outcomes. The strong performance of the GAT structure-only variant (F1 = 0.8573) confirms that interaction topology alone carries significant predictive signal.</p>
-                <p>The full model’s gains from metadata fusion (1.23 pp F1 improvement) align with literature showing that department affiliation and hawkishness modulate decision paths (Schub, 2022; Jost et al., 2024). Yet the additional uplift from edge weights (0.99 pp) emphasizes the nuanced power of dissent and support patterns in tipping decisions toward conflict.</p>
-                <p>Limitations include potential transcription biases and the US-centric archive. Future cross-national extensions and real-time social-media–based networks could address these and broaden applicability.</p>
-            </div>
-            <!-- Future Work -->
-            <div class="section future-work">
-                <h2>Future Work</h2>
-                <ul>
-                    <li>Temporal GNNs for dynamic evolution of advisor networks.</li>
-                    <li>Cross-national archives (Soviet, UK) to validate generality.</li>
-                    <li>Real-time analysis via social-media and news feeds.</li>
-                </ul>
-            </div>
-            <!-- Footer -->
-            <div class="footer">
-                2025 IC2S2 · Contact <a href="mailto:tzhang3@uchicago.edu">tzhang3@uchicago.edu</a>
-            </div>
-        </main>
-    </body>
+      </p>
+      <!-- Performance Table -->
+      <table>
+        <caption>
+          <strong>Table 1:</strong>
+          Model performance comparison on conflictual policy prediction task.
+
+
+        </caption>
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>F1</th>
+            <th>Accuracy</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:600;color:var(--maroon-dark);">GAT + Metadata</td>
+            <td><strong>0.8696</strong></td>
+            <td><strong>0.8734</strong></td>
+          </tr>
+          <tr>
+            <td>GAT (structure-only)</td>
+            <td>0.8566</td>
+            <td>0.8603</td>
+          </tr>
+          <tr>
+            <td>Random Forest (metadata)</td>
+            <td>0.8527</td>
+            <td>0.8659</td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- Result Interpretation -->
+      <p>
+        We used <strong>weighted F1 score</strong> as our primary metric, given the class imbalance in conflictual vs. non-conflictual decisions. The <strong>GAT + Metadata</strong>
+        model achieved the highest performance, with an F1 score of <strong>0.8696</strong>
+        and an accuracy of <strong>0.8734</strong>
+        , surpassing the Random Forest by <strong>1.69 percentage points</strong> in F1. Furthermore, the structure-only GAT also outperformed the Random Forest in F1 by <strong>0.39 percentage points</strong>, underscoring the predictive value of relational structure.
+      </p>
+    </div>
+    <!-- Ablation Study -->
+    <div class="section ablation">
+      <h2>Ablation Study</h2>
+      <table>
+        <caption><strong>Table 2:</strong> Ablation studies; ΔF1 by feature removal.</caption>
+        <tr>
+          <th>Removal</th>
+          <th>Δ F1 (pp)</th>
+        </tr>
+        <tr>
+          <td>Departmental affiliations from nodes</td>
+          <td>-0.82</td>
+        </tr>
+        <tr>
+          <td>Edge weights</td>
+          <td>-1.42</td>
+        </tr>
+        <tr>
+          <td>Meeting metadata from features</td>
+          <td>-1.45</td>
+        </tr>
+        <tr>
+          <td>All above</td>
+          <td>-1.30</td>
+        </tr>
+      </table>
+      <p>
+        The largest drop upon excluding meeting metadata (<strong>-1.45 pp</strong>) highlights the critical role of contextual features, while <strong>edge weights and interaction patterns</strong> also contribute substantially.
+      </p>
+    </div>
+    <div class="section discussion">
+      <h2>Discussion</h2>
+      <p>
+        Our results underscore that <strong>relational dynamics among advisors</strong>—beyond individual predispositions—are key drivers of foreign-policy outcomes. The strong performance of the GAT structure-only variant (<strong>F1 = 0.8566</strong>) confirms that <strong>interaction topology alone</strong> carries significant predictive signal.
+      </p>
+      <p>
+        The full model’s gains from metadata fusion (<strong>1.30 pp F1 improvement</strong>) align with literature showing that department affiliation and hawkishness modulate decision paths (Schub, 2022; Jost et al., 2024). Yet the additional uplift from edge weights (1.42 pp) emphasizes the nuanced power of dissent and support patterns in tipping decisions toward conflict.
+      </p>
+      <p>
+        Limitations include potential transcription biases and the US-centric archive. Future cross-national extensions and real-time social-media-based networks could address these and broaden applicability.
+      </p>
+    </div>
+
+    <!-- Future Work -->
+    <div class="section future-work">
+      <h2>Future Work</h2>
+      <ul>
+        <li>Temporal GNNs for dynamic evolution of advisor networks.</li>
+        <li>Cross-national archives (Soviet, UK) to validate generality.</li>
+        <li>Integration of real-time data via social-media and news feeds.</li>
+      </ul>
+    </div>
+    <!-- Footer -->
+    <div class="footer">
+      2025 IC2S2 · Contact <a href="mailto:tzhang3@uchicago.edu">tzhang3@uchicago.edu</a>
+    </div>
+  </main>
+</body>
+
 </html>
