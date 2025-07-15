@@ -243,20 +243,16 @@
         <strong>Why advisers matter ▸</strong>
         Foreign-policy scholarship increasingly recognises that outcomes emerge from <em>collective deliberation</em>
         , not a single leader’s will.
-
-
       </p>
       <p>
         <strong>Puzzle ▸</strong>
-        Do patterns of <span class="highlight">agreement (+)</span>
-        and <span class="highlight">dissent (–)</span>
-        history amongst meeting participants signal whether the group will endorse a conflictual course of action?
-
-
+        Do previous <span class="highlight">agreements</span>
+        and <span class="highlight">dissents</span>
+        amongst meeting participants signal whether the group will endorse conflictual foreign policy decisions?
       </p>
       <p>
         <strong>Contribution ▸</strong>
-        We transform Cold-War transcripts into signed interaction graphs and train a Graph Attention Network that forecasts conflict with <span style="color:var(--maroon);font-weight:600;">F1 = 0.87</span>
+        We transform Cold-War transcripts into signed interaction graphs and train a Graph Attention Network that forecasts conflictual policy decisions with <span style="color:var(--maroon);font-weight:600;">F1 = 0.87</span>
         , surpassing tree-based baselines.
 
 
@@ -285,7 +281,7 @@
         <li>ChatGPT tags participants, proposals, support, objections, and policy domains</li>
         <li>
           <span class="highlight">Nodes</span>
-          represent individual advisors or officials involved in the discussion, while
+          represent individual advisors or officials involved in the discussion.
         </li>
         <li>
           <span class="highlight">Edges</span>
@@ -342,7 +338,7 @@
             <td>0.8603</td>
           </tr>
           <tr>
-            <td>Random Forest (metadata)</td>
+            <td>Random Forest + Metadata</td>
             <td>0.8527</td>
             <td>0.8659</td>
           </tr>
@@ -350,10 +346,9 @@
       </table>
       <!-- Result Interpretation -->
       <p>
-        We used <strong>weighted F1 score</strong> as our primary metric, given the class imbalance in conflictual vs. non-conflictual decisions. The <strong>GAT + Metadata</strong>
+        Given the class imbalance, we used <strong>weighted F1 score</strong> as our primary metric. The <strong>GAT + Metadata</strong>
         model achieved the highest performance, with an F1 score of <strong>0.8696</strong>
-        and an accuracy of <strong>0.8734</strong>
-        , surpassing the Random Forest by <strong>1.69 percentage points</strong> in F1. Furthermore, the structure-only GAT also outperformed the Random Forest in F1 by <strong>0.39 percentage points</strong>, underscoring the predictive value of relational structure.
+        , surpassing the Random Forest by <strong>1.69 percentage points</strong> in F1. Furthermore, the structure-only GAT relying solely on edge weights and departmental affiliation also outperformed the baseline in F1 by <strong>0.39 percentage points</strong>, underscoring the predictive value of relational structure.
       </p>
     </div>
     <!-- Ablation Study -->
@@ -366,19 +361,19 @@
           <th>Δ F1 (pp)</th>
         </tr>
         <tr>
-          <td>Departmental affiliations from nodes</td>
+          <td>Remove departmental affiliations from nodes</td>
           <td>-0.82</td>
         </tr>
         <tr>
-          <td>Edge weights</td>
+          <td>Remove edge weights</td>
           <td>-1.42</td>
         </tr>
         <tr>
-          <td>Meeting metadata from features</td>
+          <td>Remove meeting metadata from features</td>
           <td>-1.45</td>
         </tr>
         <tr>
-          <td>All above</td>
+          <td>Remove both meeting metadata and edge weights</td>
           <td>-1.30</td>
         </tr>
       </table>
@@ -392,7 +387,7 @@
         Our results underscore that <strong>relational dynamics among advisors</strong>—beyond individual predispositions—are key drivers of foreign-policy outcomes. The strong performance of the GAT structure-only variant (<strong>F1 = 0.8566</strong>) confirms that <strong>interaction topology alone</strong> carries significant predictive signal.
       </p>
       <p>
-        The full model’s gains from metadata fusion (<strong>1.30 pp F1 improvement</strong>) align with literature showing that department affiliation and hawkishness modulate decision paths (Schub, 2022; Jost et al., 2024). Yet the additional uplift from edge weights (1.42 pp) emphasizes the nuanced power of dissent and support patterns in tipping decisions toward conflict.
+        The full model’s gains from departmental attribution and meeting metadata (<strong>0.82 and 1.45 pp respectively</strong>) align with literature showing that department affiliation and hawkishness modulate decision paths (Schub, 2022; Jost et al., 2024). The additional uplift from edge weights (1.42 pp) emphasizes the nuanced power of dissent and support patterns in tipping decisions toward conflict.
       </p>
       <p>
         Limitations include potential transcription biases and the US-centric archive. Future cross-national extensions and real-time social-media-based networks could address these and broaden applicability.
