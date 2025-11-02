@@ -3,31 +3,40 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>IC2S2 2025 Poster · Tianyi Zhang</title>
+  <title>EMNLP 2025 Poster · Tianyi Zhang</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.css" integrity="sha384-WcoG4HRXMzYzfCgiyfrySxx90XSl2rxY5mnVY5TwtWE6KLrArNKn0T/mOgNL0Mmi" crossorigin="anonymous">
+
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/katex.min.js" integrity="sha384-J+9dG2KMoiR9hqcFao0IBLwxt6zpcyN68IgwzsCSkbreXUjmNVRhPFTssqdSGjwQ" crossorigin="anonymous"></script>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.25/dist/contrib/auto-render.min.js" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
   <style>
     /* Google Fonts */
     @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
 
-    /* ----------  Chicago-Maroon Theme  ---------- */
+    /* ---------- Chicago-Maroon Theme (Adapted for EMNLP) ---------- */
     :root {
       --bg: #fdfcfa;
       --maroon: #800000;
       --maroon-light: #9c1f1f;
       --maroon-dark: #5e0000;
-      --gray: #444;
+      --gray: #333;
       --card-bg: #fcf8f6;
       --radius: 14px;
-      --shadow: 0 6px 14px rgba(202, 202, 202);
+      --shadow: 0 6px 14px rgba(180, 180, 180, 0.6);
     }
 
     html {
-      font-size: 38px;
+      /* Base font size for A0 poster */
+      font-size: 48px;
     }
 
     body {
-      width: 36in;
-      height: 24in;
+      /* A0 Portrait Dimensions */
+      width: 33.1in;
+      height: 46.8in;
       margin: 0;
       padding: 0;
       background: var(--bg);
@@ -38,22 +47,21 @@
       font-weight: 600;
     }
 
-    /* ---------- Grid Layout ---------- */
+    /* ---------- Grid Layout (A0 Portrait) ---------- */
     main {
       width: 100%;
       height: 100%;
       padding: 1in;
       box-sizing: border-box;
       display: grid;
-      grid-template-columns: 1fr 1.2fr 1fr;
-      grid-template-rows: 335px repeat(11, 130px) 80px;
+      /* 6 equal columns */
+      grid-template-columns: repeat(6, 1fr);
+      /* Header, 20 flexible content rows, Footer */
+      grid-template-rows: 350px 0.85fr 1.5fr 0.85fr 80px;
       gap: 0.55rem;
       font-family: 'EB Garamond', serif;
       color: var(--gray);
       border: 3px solid var(--maroon);
-      background-image: url('bg.png');
-      background-repeat: repeat;
-      background-size: auto;
     }
 
     /* ---------- Header ---------- */
@@ -63,65 +71,98 @@
       text-align: center;
       position: relative;
       padding-bottom: 0.2rem;
+      border-bottom: 3px solid var(--maroon);
     }
 
     .logo {
       position: absolute;
       left: 0;
       top: -8px;
-      height: 245px;
+      height: 250px;
     }
 
     .qr {
       position: absolute;
       right: 0;
       top: 8px;
-      height: 245px;
+      height: 250px;
     }
 
     .title {
-      font-size: 2.3rem;
+      font-size: 1.8rem;
       color: var(--maroon);
       font-weight: 600;
       font-family: 'EB Garamond', serif;
       letter-spacing: 0.5px;
+      margin-top: 0.1em;
     }
 
     .authors {
-      font-size: 0.9rem;
-      margin-top: 0.15rem;
+      font-size: 1.0rem;
+      margin-top: 0.25rem;
     }
 
-    /* ---------- Section Placement ---------- */
+    /* ---------- Section Placement (6-Column Structure) ---------- */
+
+    /* --- Row 1: Intro & Method (5 rows high) --- */
     .introduction {
-      grid-column: 1 / 2;
-      grid-row: 2 / 6;
+      grid-column: 1 / 4;
+      /* Spans 3 columns */
+      grid-row: 2 / 3;
+      /* 5 rows */
     }
 
-    .data {
-      grid-column: 1 / 2;
-      grid-row: 6 / 13;
+    .methodology {
+      grid-column: 4 / 7;
+      /* Spans 3 columns */
+      grid-row: 2 / 3;
+      /* 5 rows */
     }
 
-    .results {
-      grid-column: 2 / 3;
-      grid-row: 2 / 13;
+    /* --- Row 2: Tasks (10 rows high) --- */
+    .task-1 {
+      grid-column: 1 / 3;
+      /* Spans 2 columns */
+      grid-row: 3 / 4;
+      /* 10 rows */
     }
 
-    .ablation {
-      grid-column: 3 / 4;
-      grid-row: 2 / 6;
+    .task-2 {
+      grid-column: 3 / 5;
+      /* Spans 2 columns */
+      grid-row: 3 / 4;
+      /* 10 rows */
     }
 
+    .task-3 {
+      grid-column: 5 / 7;
+      /* Spans 2 columns */
+      grid-row: 3 / 4;
+      /* 10 rows */
+    }
+
+    /* --- Row 3: Discussion & Conclusion (5 rows high) --- */
     .discussion {
-      grid-column: 3 / 4;
-      grid-row: 6 / 11;
+      grid-column: 1 / 3;
+      /* Spans 2 columns */
+      grid-row: 4 / 5;
+      /* 5 rows */
     }
 
-    .future-work {
-      grid-column: 3 / 4;
-      grid-row: 11 / 13;
+    .conclusion {
+      grid-column: 3 / 5;
+      /* Spans 2 columns */
+      grid-row: 4 / 5;
+      /* 5 rows */
     }
+
+    .resources {
+      grid-column: 5 / 7;
+      /* Spans 2 columns */
+      grid-row: 4 / 5;
+      /* 5 rows */
+    }
+
 
     /* ---------- Sections ---------- */
     .section {
@@ -132,12 +173,15 @@
       padding: 0.55rem 0.65rem;
       display: flex;
       flex-direction: column;
-      font-size: 0.78rem;
+      font-size: 0.82rem;
+      line-height: 1.4;
+      /* Added for overflow */
+      overflow: hidden;
     }
 
     .section h2 {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.05rem;
+      font-size: 1.15rem;
       color: var(--maroon-dark);
       margin: 0 0 0.35rem 0;
       padding-bottom: 0.15rem;
@@ -149,51 +193,64 @@
       margin: .4rem;
     }
 
-    .results h2 {
+    .section ul {
+      margin-top: .3rem;
+      padding-left: 1.1rem;
+    }
+
+    .section li {
+      margin-bottom: 0.5em;
+    }
+
+    /* Center headers for task columns */
+    .task-1 h2,
+    .task-2 h2,
+    .task-3 h2 {
       text-align: center;
-    }
-
-    .data ul {
-        margin-top: .5rem;
-    }
-
-    .future-work ul {
-      margin-top: 0.7rem;
     }
 
     /* ---------- Figures & Tables ---------- */
     .figure {
-      max-width: 100%;
+      width: 100%;
+      height: auto;
+      max-height: 90%;
+      /* Ensure it fits in the box */
       margin-top: 0.35rem;
       border: 1px solid #bfbfbf;
       border-radius: 8px;
       padding: 0.18rem;
       background: #fff;
       object-fit: contain;
+      box-sizing: border-box;
     }
 
-    .results .figure {
-      height: 6.9in;
+    /* Adjust figure height in task columns to account for h2 */
+    .task-1 .figure,
+    .task-2 .figure,
+    .task-3 .figure {
+      max-height: calc(100% - 1.5rem);
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
       margin-top: 0.4rem;
-      font-size: 0.62rem;
+      font-size: 0.7rem;
+      /* Smaller font for tables */
     }
 
     th,
     td {
       border: 1px solid #aaa;
-      padding: 0.17rem;
-      text-align: center;
+      padding: 0.2rem;
+      text-align: left;
     }
 
     th {
       background: var(--maroon-light);
       color: #fff;
       font-weight: 600;
+      text-align: center;
     }
 
     tr:nth-child(even) td {
@@ -206,206 +263,273 @@
       font-size: .8rem;
       margin-top: .2em;
       margin-bottom: .1rem;
+      font-family: 'EB Garamond', serif;
+    }
+
+    /* ---------- Resources/QR Section ---------- */
+    .qr-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin-top: 0.5rem;
+      text-align: center;
+    }
+
+    .qr-box {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem;
+    }
+
+    .qr-box img {
+      width: 3.5in;
+      max-width: 100%;
+      /* Ensure it shrinks if container is too small */
+      height: auto;
+      border: 1px solid #ccc;
     }
 
     /* ---------- Footer ---------- */
     .footer {
       grid-column: 1 / -1;
-      grid-row: 13 / 14;
+      grid-row: 5 / 6;
       text-align: center;
       font-size: 0.7rem;
       color: var(--maroon-dark);
       font-family: 'Montserrat', sans-serif;
-      padding-top: 0.2rem;
+      padding-top: 0.3rem;
+      border-top: 3px solid var(--maroon);
     }
 
     a {
       color: var(--maroon-dark);
       text-decoration: none;
+      font-weight: 600;
     }
   </style>
 </head>
 
 <body>
   <main>
-    <!-- Header -->
     <div class="header">
-      <img src="./uchicago.webp" alt="University of Chicago Shield" class="logo">
-      <img src="./qr-code.png" class="qr">
-      <div class="title">Predicting Foreign Policy Decisions: Network Analysis of</div>
-      <div class="title subtitle">Cold War Leader-Advisor Interactions</div>
-      <div class="authors">Tianyi Zhang · University of Chicago · IC2S2 2025, Norrköping</div>
+      <img src="uchicago.webp" alt="University of Chicago Shield" class="logo">
+      <img src="qr-code.png" alt="QR Code for Paper" class="qr">
+
+      <div class="title">Probing Political Ideology in Large Language Models:</div>
+      <div class="title subtitle">How Latent Political Representations Generalize Across Tasks</div>
+      <div class="authors">Tianyi Zhang · The University of Chicago · EMNLP 2025</div>
     </div>
-    <!-- Introduction -->
+
     <div class="section introduction">
       <h2>Introduction</h2>
       <p>
-        <strong>Why advisers matter ▸</strong>
-        Foreign-policy scholarship increasingly recognises that outcomes emerge from <em>collective deliberation</em>
-        , not a single leader’s will.
+        Large language models (LLMs) encode rich internal representations of political ideology, but it remains unclear how these representations contribute to model decision-making. In our work, we examine whether latent ideological directions in LLMs generalize across political tasks? And do these latent structures reflect real-world socio-political constructs?
       </p>
-      <p>
-        <strong>Puzzle ▸</strong>
-        Do previous <span class="highlight">agreements</span>
-        and <span class="highlight">dissents</span>
-        amongst meeting participants signal whether the group will endorse conflictual foreign policy decisions?
-      </p>
-      <p>
-        <strong>Contribution ▸</strong>
-        We transform Cold-War transcripts into signed interaction graphs and train a Graph Attention Network that forecasts conflictual policy decisions with <span style="color:var(--maroon);font-weight:600;">F1 = 0.87</span>
-        , surpassing tree-based baselines.
 
-
-      </p>
-      <p>
-        <strong>Contribution ▸</strong>
-        Network structure—who sides with whom—encodes latent power and predicts decisions even when identifying information is removed.
-
-
-      </p>
-    </div>
-    <!-- Data -->
-    <div class="section data">
-      <h2>Data & Methodology</h2>
-      <img src="framework.png" alt="GAT Framework" class="figure">
-      <div class="caption">
-        <strong>Figure 1: </strong>
-        The data processing pipeline.
-      </div>
+      <p><strong>Key Findings</strong></p>
       <ul>
         <li>
-          <span class="highlight">2 685</span> meetings between 1945-89 & <span class="highlight">104 k</span>
-          speech acts (Jost et al., 2024)
-
-        </li>
-        <li>ChatGPT tags participants, proposals, support, objections, and policy domains</li>
-        <li>
-          <span class="highlight">Nodes</span>
-          represent individual advisors or officials involved in the discussion.
+          <strong>Cross-Task Generalization ▸</strong> Latent ideological directions identified with linear probes are functionally engaged and generalize across a range of political reasoning tasks.
         </li>
         <li>
-          <span class="highlight">Edges</span>
-          capture the number of previous agreements or disagreements between individuals across policy domains.
+          <strong>Partial Disentanglement ▸</strong> While the ideological dimension identified with DW-NOMINATE scores correlate strongly with bias detection, they show limited effect on behavioral tasks like vote simulation.
+        </li>
+        <li>
+          <strong>Asymmetrical Effects ▸</strong> Leftward (progressive) interventions tend to produce coherent results, while rightward (conservative) interventions are often less effective and can degrade the model's output fluency.
         </li>
       </ul>
     </div>
-    <!-- Results -->
-    <div class="section results">
-      <h2>Results</h2>
-      <!-- Network Image -->
-      <img src="nixon.png" alt="Nixon Adviser Network" class="figure">
-      <!-- Network Description -->
-      <div class="caption">
-        <strong>Figure 2: </strong>
-        Interaction network from the Nixon administration.
-      </div>
 
-      <!-- Model Description -->
+    <div class="section methodology">
+      <h2>Methodology</h2>
+      <p>The study uses a three-step methodology. First, we probe for latent ideological representations by training linear ridge models on the activations of attention heads. These probes are trained to predict the DW-NOMINATE scores of U.S. lawmakers.</p>
+        
+      <p>We then apply inference-time interventions to steer the model. During text generation, the activations \(x\) of the top-k predictive heads are modified by adding the learned direction vector, i.e., the ridge model coefficients \(\theta\), scaled by a strength factor \(\alpha \in [-30, 30]\):
+        \[x \leftarrow x + \alpha \sigma \theta\]
+      A negative \(\alpha\) steers liberal, while a positive \(\alpha\) steers conservative.</p>
+      
+      <p>Finally, we evaluate the effect of this steering on three downstream tasks: 1) Political Bias Detection, 2) Voting Preference Prediction, and 3) Bias Neutralization via Rewriting. This tests whether the ideological direction learned from one context generalizes to and causally influences other political reasoning tasks.</p>
+    </div>
+
+    <div class="section task-1">
+      <h2>Task 1: Political Bias Detection</h2>
       <p>
-        To predict whether a meeting would result in a <em>conflictual policy decision</em>
-        , we constructed
-        administration-specific interaction networks and applied a <strong>2-layer Graph Attention Network (GAT)</strong>
-        .
-        Node features included learnable embeddings and departmental affiliations, while edges encoded policy-related
-        agreement and disagreement. For each meeting subgraph, we pooled the node embeddings and concatenated them with
-        meeting-level features (e.g., number of departments represented, mean hawkishness), which were then passed into
-        a linear layer to produce binary outcome predictions.
+        <strong>Task:</strong> We prompt the model to classify 240 synthetic policy statements (generated by `gpt-4o-mini`) as liberal, conservative, or neutral.
       </p>
-      <!-- Performance Table -->
+      <p>
+        <strong>Prompt:</strong> "...is the following statement biased and leaning toward a liberal or conservative viewpoint? `[Statement]`"
+      </p>
+      <p>
+        <strong>Evaluation:</strong> We measure the Pearson correlation \(r\) between the intervention strength \(\alpha\) and the average classified label output (e.g., Liberal = \(+2\), Conservative = \(-2\)).
+      </p>
+      <p>
+        <strong>Finding:</strong> Interventions <span class="highlight">causally shift the model's perception of bias</span>. Steering the model left (\(\alpha
+
+        < 0\)) causes it to perceive the world as more conservative, and vice-versa. </p>
+
+          <img src="sankey_plot.png" alt="Sankey Diagram of Bias Label Transitions" class="figure" style="max-height: 35%;">
+          <div class="caption">
+            <strong>Figure 1:</strong> Label transitions across intervention strengths (\(\alpha = -30 \rightarrow 0 \rightarrow 30\)). Steering left makes the model see text as <strong>Conservative</strong> (red); steering right makes it see text as <strong>Liberal</strong> (blue).
+          </div>
+
+          <table>
+            <caption><strong>Table 1:</strong> Pearson \(r\) between intervention strength \(\alpha\) and average bias classification label. Strong negative correlations show successful steering.</caption>
+            <thead>
+              <tr>
+                <th>\(k\) Heads</th>
+                <th>LLaMA-2 7B</th>
+                <th>LLaMA-3.1 8B</th>
+                <th>Qwen-2.5 7B</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>8</td>
+                <td>-0.98</td>
+                <td><span class="highlight">0.88</span></td>
+                <td>-0.67</td>
+              </tr>
+              <tr>
+                <td>16</td>
+                <td><strong>-0.99</strong></td>
+                <td><span class="highlight">0.43</span></td>
+                <td>0.35</td>
+              </tr>
+              <tr>
+                <td>32</td>
+                <td>-0.97</td>
+                <td>-0.55</td>
+                <td><strong>-0.99</strong></td>
+              </tr>
+              <tr>
+                <td>64</td>
+                <td>-0.72</td>
+                <td><span class="highlight">0.94</span></td>
+                <td>-0.91</td>
+              </tr>
+              <tr>
+                <td>96</td>
+                <td>-0.85</td>
+                <td><span class="highlight">0.83</span></td>
+                <td>-0.81</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>
+            Note the <span class="highlight">opposite effect for LLaMA-3.1</span>, which seems to conflate its own alignment with the classification task.
+          </p>
+    </div>
+
+    <div class="section task-2">
+      <h2>Task 2: Voting Preference Simulation</h2>
+      <img src="vote_plot.png" alt="Voting Preference Intervention Plot" class="figure" style="max-height: 50%;">
+      <div class="caption">
+        <strong>Figure 2:</strong> Average predicted vote (Biden = \(-1\), Trump = \(+1\)) across intervention strengths and models.
+      </div>
+      <p style="margin-top: 0.5rem;">
+        <strong>Finding:</strong> Voting simulation is <span class="highlight">highly resistant to steering</span>.
+      </p>
+      <ul>
+        <li>The <strong>Liberal Persona</strong> is unsteerable across all models, likely due to strong RLHF alignment.</li>
+        <li>The <strong>Conservative Persona</strong> shows more variation, but LLaMA-2 7B steers counterintuitively (steering conservative \(\rightarrow\) more Biden).</li>
+      </ul>
+      <p>
+        This suggests the latent dimension for voting behavior is <span class="highlight">partially disentangled</span> from the discourse dimension.
+      </p>
+    </div>
+
+    <div class="section task-3">
+      <h2>Task 3: Bias Neutralization</h2>
+      <img src="rewrite_plot.png" alt="Rewrite Intervention Plot" class="figure" style="max-height: 35%;">
+      <div class="caption">
+        <strong>Figure 3:</strong> Distribution of bias in "neutral" rewrites, as labeled by GPT-5.
+      </div>
+      <p style="margin-top: 0.5rem;">
+        <strong>Finding:</strong> Interventions <span class="highlight">inject bias</span> into the generation task. When steered conservative (\(\alpha = 30\)), the model produces more conservative-leaning rewrites, even when explicitly instructed to be neutral.
+      </p>
+      <p>The model was asked to rewrite a statement on transgender rights to be neutral. The baseline (\(\alpha=0\)) performs well, but interventions inject new partisan rhetoric.</p>
       <table>
-        <caption>
-          <strong>Table 1:</strong>
-          Model performance comparison on conflictual policy prediction task.
-
-
-        </caption>
+        <caption><strong>Table 2:</strong> Model outputs for bias neutralization under steering.</caption>
         <thead>
           <tr>
-            <th>Model</th>
-            <th>F1</th>
-            <th>Accuracy</th>
+            <th>Steer (\(\alpha\))</th>
+            <th>Output Excerpt</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td style="font-weight:600;color:var(--maroon-dark);">GAT + Metadata</td>
-            <td><strong>0.8696</strong></td>
-            <td><strong>0.8734</strong></td>
+            <td>Original</td>
+            <td>"...it is essential to respect individuals' privacy while also ensuring that all students feel safe and supported in their school environments."</td>
           </tr>
           <tr>
-            <td>GAT (structure-only)</td>
-            <td>0.8566</td>
-            <td>0.8603</td>
+            <td>-30 (Liberal)</td>
+            <td>"...recognize the importance of respecting individuals' privacy and dignity, while also addressing the <span class="highlight">ongoing struggle for justice and equality</span> in the face of <span class="highlight">systemic oppression</span>..."</td>
           </tr>
           <tr>
-            <td>Random Forest + Metadata</td>
-            <td>0.8527</td>
-            <td>0.8659</td>
+            <td><strong>0 (Neutral)</strong></td>
+            <td><strong>"...strike a balance between respecting individuals' privacy and creating an inclusive and supportive environment for all students."</strong></td>
+          </tr>
+          <tr>
+            <td>+30 (Conservative)</td>
+            <td>"...consider the privacy of individuals while also ensuring that students feel safe... <span class="highlight">specific actions and preferences of individuals should be taken into account...</span>" (output becomes less coherent)</td>
           </tr>
         </tbody>
       </table>
-      <!-- Result Interpretation -->
-      <p>
-        Given the class imbalance, we used <strong>weighted F1 score</strong> as our primary metric. The <strong>GAT + Metadata</strong>
-        model achieved the highest performance, with an F1 score of <strong>0.8696</strong>
-        , surpassing the Random Forest by <strong>1.69 percentage points</strong> in F1. Furthermore, the structure-only GAT relying solely on edge weights and departmental affiliation also outperformed the baseline in F1 by <strong>0.39 percentage points</strong>, underscoring the predictive value of relational structure.
-      </p>
     </div>
-    <!-- Ablation Study -->
-    <div class="section ablation">
-      <h2>Ablation Study</h2>
-      <table>
-        <caption><strong>Table 2:</strong> Ablation studies; ΔF1 by feature removal.</caption>
-        <tr>
-          <th>Removal</th>
-          <th>Δ F1 (pp)</th>
-        </tr>
-        <tr>
-          <td>Remove departmental affiliations from nodes</td>
-          <td>-0.82</td>
-        </tr>
-        <tr>
-          <td>Remove edge weights</td>
-          <td>-1.42</td>
-        </tr>
-        <tr>
-          <td>Remove meeting metadata from features</td>
-          <td>-1.45</td>
-        </tr>
-        <tr>
-          <td>Remove both meeting metadata and edge weights</td>
-          <td>-1.30</td>
-        </tr>
-      </table>
-      <p>
-        The largest drop upon excluding meeting metadata (<strong>-1.45 pp</strong>) highlights the critical role of contextual features, while <strong>edge weights and interaction patterns</strong> also contribute substantially.
-      </p>
-    </div>
+
     <div class="section discussion">
       <h2>Discussion</h2>
       <p>
-        Our results underscore that <strong>relational dynamics among advisors</strong>—beyond individual predispositions—are key drivers of foreign-policy outcomes. The strong performance of the GAT structure-only variant (<strong>F1 = 0.8566</strong>) confirms that <strong>interaction topology alone</strong> carries significant predictive signal.
+        Our results highlight the dual role of latent ideological directions: they are both a source of <span class="highlight">behavioral bias</span> and a potential tool for <span class="highlight">controlling it</span>.
       </p>
+      <ul>
+        <li>
+          <strong>Linear & Transferable (Partially):</strong> In bias detection, ideology acts like a linear, transferable "point of view" or confirmation bias. Shifting the model's internal axis reliably changes its external judgment.
+        </li>
+        <li>
+          <strong>Disentangled & Rigid:</strong> In voting simulation, behavior is rigid and less steerable. This implies that behavioral simulation (e.g., voting) is encoded in a <span class="highlight">partially disentangled</span> latent subspace, one that is heavily constrained by RLHF alignment.
+        </li>
+        <li>
+          <strong>Model-Specific Geometry:</strong> The geometry of the ideological manifold differs across models. LLaMA-2 and LLaMA-3.1 show opposite steering effects, suggesting alignment can rotate or entangle these dimensions.
+        </li>
+      </ul>
       <p>
-        The full model’s gains from departmental attribution and meeting metadata (<strong>0.82 and 1.45 pp respectively</strong>) align with literature showing that department affiliation and hawkishness modulate decision paths (Schub, 2022; Jost et al., 2024). The additional uplift from edge weights (1.42 pp) emphasizes the nuanced power of dissent and support patterns in tipping decisions toward conflict.
-      </p>
-      <p>
-        Limitations include potential transcription biases and the US-centric archive. Future cross-national extensions and real-time social-media-based networks could address these and broaden applicability.
+        Ideology in LLMs functions less as a single, fixed dimension and more as a <span class="highlight">complex manifold</span> whose geometry depends on pretraining and alignment.
       </p>
     </div>
 
-    <!-- Future Work -->
-    <div class="section future-work">
-      <h2>Future Work</h2>
-      <ul>
-        <li>Temporal GNNs for dynamic evolution of advisor networks.</li>
-        <li>Cross-national archives (Soviet, UK) to validate generality.</li>
-        <li>Integration of real-time data via social-media and news feeds.</li>
-      </ul>
+    <div class="section conclusion">
+      <h2>Conclusion</h2>
+      <p>We demonstrate that latent ideological representations in LLMs are functionally "real" and can be causally steered. Our key findings are:</p>
+      <ol>
+        <li><strong>Cross-Task Generalization:</strong> Ideological directions found via probes generalize to causally influence downstream tasks like bias detection and text rewriting.</li>
+        <li><strong>Disentangled Representations:</strong> We find a fundamental disjunction between <span class="highlight">ideological framing</span> (steerable) and <span class="highlight">behavioral simulation</span> (rigid), suggesting distinct latent dimensions.</li>
+        <li><strong>Asymmetric Effects:</strong> Pretraining and alignment create asymmetries in steering, complicating naive interventions.</li>
+        </V>
     </div>
-    <!-- Footer -->
+
+    <div class="section resources">
+      <h2>Contact & Resources</h2>
+      <p>Scan the QR codes for the full paper, replication code, and dataset.</p>
+      <div class="qr-container">
+        <div class="qr-box">
+          <img src="qr-code.png" alt="QR Code for Paper">
+          <strong>Paper & Code</strong>
+        </div>
+        <div class="qr-box">
+          <img src="qr-code.png" alt="QR Code for Dataset">
+          <strong>Dataset</strong>
+        </div>
+      </div>
+      <p style="text-align: center; font-size: 0.8em; margin-top: 1em; font-family: 'Montserrat', sans-serif;">
+        <a href="https://github.com/DotIN13/linear-political-llm">github.com/DotIN13/linear-political-llm</a>
+        <br>
+        <a href="http://huggingface.co/datasets/DotIN13/political-statements">huggingface.co/datasets/DotIN13/political-statements</a>
+      </p>
+    </div>
+
+
     <div class="footer">
-      2025 IC2S2 · Contact <a href="mailto:tzhang3@uchicago.edu">tzhang3@uchicago.edu</a>
+      EMNLP 2025 · Contact <a href="mailto:tzhang3@uchicago.edu">tzhang3@uchicago.edu</a>
     </div>
   </main>
 </body>
