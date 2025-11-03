@@ -167,7 +167,6 @@
     /* ---------- Sections ---------- */
     .section {
       background: var(--card-bg);
-      border-left: 6px solid var(--maroon);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding: 0.55rem 0.65rem;
@@ -177,6 +176,10 @@
       line-height: 1.4;
       /* Added for overflow */
       overflow: hidden;
+    }
+
+    .first-section {
+      border-left: 6px solid var(--maroon);
     }
 
     .section h2 {
@@ -271,7 +274,7 @@
       display: flex;
       justify-content: space-around;
       align-items: center;
-      margin-top: 0.5rem;
+      margin-top: 0.75rem;
       text-align: center;
     }
 
@@ -312,17 +315,17 @@
   <main>
     <div class="header">
       <img src="uchicago.webp" alt="University of Chicago Shield" class="logo">
-      <img src="qr-code.png" alt="QR Code for Paper" class="qr">
+      <img src="qr-code-code.png" alt="QR Code for Paper" class="qr">
 
       <div class="title">Probing Political Ideology in Large Language Models:</div>
       <div class="title subtitle">How Latent Political Representations Generalize Across Tasks</div>
       <div class="authors">Tianyi Zhang · The University of Chicago · EMNLP 2025</div>
     </div>
 
-    <div class="section introduction">
+    <div class="section introduction first-section">
       <h2>Introduction</h2>
       <p>
-        Large language models (LLMs) encode rich internal representations of political ideology, but it remains unclear how these representations contribute to model decision-making. In our work, we examine whether latent ideological directions in LLMs generalize across political tasks? And do these latent structures reflect real-world socio-political constructs?
+        Large language models (LLMs) encode rich internal representations of political ideology, but it remains unclear how these representations contribute to model decision-making. In our work, we examine whether latent ideological directions in LLMs generalize across tasks, and if these correlations mirror relationships among real-world political structures.
       </p>
 
       <p><strong>Key Findings</strong></p>
@@ -331,10 +334,10 @@
           <strong>Cross-Task Generalization ▸</strong> Latent ideological directions identified with linear probes are functionally engaged and generalize across a range of political reasoning tasks.
         </li>
         <li>
-          <strong>Partial Disentanglement ▸</strong> While the ideological dimension identified with DW-NOMINATE scores correlate strongly with bias detection, they show limited effect on behavioral tasks like vote simulation.
+          <strong>Partial Disentanglement ▸</strong> While the ideological dimension identified with DW-NOMINATE scores correlate strongly with bias detection, they show limited effect on behavioral tasks like voting simulation.
         </li>
         <li>
-          <strong>Asymmetrical Effects ▸</strong> Leftward (progressive) interventions tend to produce coherent results, while rightward (conservative) interventions are often less effective and can degrade the model's output fluency.
+          <strong>Asymmetrical Steering ▸</strong> Leftward (liberal) interventions tend to produce coherent results, while rightward (conservative) interventions often degrade model outputs.
         </li>
       </ul>
     </div>
@@ -345,24 +348,24 @@
 
       <p>We then apply inference-time interventions to steer the model. During text generation, the activations \(x\) of the top-k predictive heads are modified by adding the learned direction vector, i.e., the ridge model coefficients \(\theta\), scaled by a strength factor \(\alpha \in [-30, 30]\):
         \[x \leftarrow x + \alpha \sigma \theta\]
-        A negative \(\alpha\) steers liberal, while a positive \(\alpha\) steers conservative.</p>
+        A negative \(\alpha\) steers the model liberal, while a positive \(\alpha\) steers conservative.</p>
 
-      <p>Finally, we evaluate the effect of this steering on three downstream tasks: 1) Political Bias Detection, 2) Voting Preference Prediction, and 3) Bias Neutralization via Rewriting. This tests whether the ideological direction learned from one context generalizes to and causally influences other political reasoning tasks.</p>
+      <p>Finally, we evaluate the effects of steering on three downstream tasks: 1) Political Bias Detection, 2) Voting Preference Prediction, and 3) Bias Neutralization, to test whether the ideological direction generalizes to various downstream political reasoning tasks.</p>
     </div>
 
-    <div class="section task-1">
+    <div class="section task-1 first-section">
       <h2>Task 1: Political Bias Detection</h2>
       <p>
         <strong>Prompt:</strong> "Is the following statement biased and leaning toward a liberal or conservative viewpoint? [Statement]"
       </p>
 
-      <img src="sankey_plot.png" alt="Sankey Diagram of Bias Label Transitions" class="figure" style="max-height: 35%; padding: 25px;">
+      <img src="sankey_plot.png" alt="Sankey Diagram of Bias Label Transitions" class="figure" style="max-height: 35%; padding: 32px 60px;">
       <div class="caption">
         <strong>Figure 1:</strong> Label transitions across intervention strengths for LLaMA-2 7B. Steering left makes the model see text as Conservative (red), and vice versa.
       </div>
 
       <table>
-        <caption><strong>Table 1:</strong> Pearson \(r\) between intervention strength \(\alpha\) and average bias classification label. LLaMA-3.1 8B encodes bias detection in the opposite direction.</caption>
+        <caption><strong>Table 1:</strong> Pearson \(r\) between intervention strength \(\alpha\) and average bias label. Negative \(r\) indicate leftward steering increases conservative classifications; LLaMA-3.1 8B shows a reverse trend.</caption>
         <thead>
           <tr>
             <th>\(k\) Heads</th>
@@ -409,23 +412,23 @@
     <div class="section task-2">
       <h2>Task 2: Voting Simulation</h2>
       <p>
-        <strong>Prompt:</strong> "In the context of 2019 U.S. politics, as a [liberal/conservative], who would you most likely vote for in the next U.S. presidential election: Joe Biden or Donald Trump?"
+        <strong>Prompt:</strong> "In the context of 2019 U.S. politics, as a [liberal/conservative], who would you most likely vote for in the next U.S. presidential election: Biden or Trump?"
       </p>
 
-      <img src="voting_liberal.png" alt="Voting Preference Intervention Plot" class="figure" style="max-height: 32%;">
-      <img src="voting_conservative.png" alt="Voting Preference Intervention Plot" class="figure" style="max-height: 32%;">
+      <img src="voting_liberal.png" alt="Voting Preference Intervention Plot" class="figure" style="max-height: 29%;">
+      <img src="voting_conservative.png" alt="Voting Preference Intervention Plot" class="figure" style="max-height: 29%;">
       <div class="caption">
         <strong>Figure 2:</strong> Average predicted vote across models.
       </div>
       <p style="margin-top: 0.5rem;">
-        <strong>Finding:</strong> The <strong>Liberal Persona</strong> is unsteerable across all models, likely due to strong RLHF alignment.
+        <strong>Finding:</strong> The limited impact on voting predictions indicate a weaker correlation between ideological and behavioral dimensions, mirroring real-world political behavioral patterns. The persistence of liberal preference for Biden suggests strong bias instilled during training.
       </p>
     </div>
 
     <div class="section task-3">
       <h2>Task 3: Bias Neutralization</h2>
       <p>
-        <strong>Prompt:</strong> "In the context of 2019 U.S. politics, please rewrite the following statement to make it politically neutral and free from liberal or conservative bias: [Statement]"
+        <strong>Prompt:</strong> "In the context of 2019 U.S. politics, please rewrite the following statement to make it politically neutral: [Statement]"
       </p>
       <img src="rewrite.png" alt="Rewrite Intervention Plot" class="figure" style="max-height: 32%; padding: 20px;">
       <div class="caption">
@@ -433,7 +436,7 @@
       </div>
 
       <table>
-        <caption><strong>Table 2:</strong> Model outputs for bias neutralization under steering.</caption>
+        <caption><strong>Table 2:</strong> Example model outputs under steering.</caption>
         <thead>
           <tr>
             <th>Steer (\(\alpha\))</th>
@@ -459,41 +462,46 @@
           </tr>
         </tbody>
       </table>
-
-      <p style="margin-top: 0.5rem;">
-        <strong>Finding:</strong> Interventions <span class="highlight">inject bias</span> into the generation task. When steered conservative (\(\alpha = 30\)), the model produces more conservative-leaning rewrites, even when explicitly instructed to be neutral.
-      </p>
     </div>
 
-    <div class="section discussion">
+    <div class="section discussion first-section">
       <h2>Discussion</h2>
       <p>
-        Our results highlight the dual role of latent ideological directions: they are both a source of <span class="highlight">behavioral bias</span> and a potential tool for <span class="highlight">controlling it</span>.
+        Our results suggest that social constructs in LLMs are not disentangled axes but a
+        <span class="highlight">complex manifold</span> consisting of correlated latent dimensions potentially shaped by pretraining and alignment:
       </p>
-      <ul>
+
+      <ul style="margin-bottom: 0;">
         <li>
-          <strong>Linear & Transferable (Partially):</strong> In bias detection, ideology acts like a linear, transferable "point of view" or confirmation bias. Shifting the model's internal axis reliably changes its external judgment.
+          <strong>Linear, Transferable Knowledge:</strong>
+          Social concepts can be linearly encoded, and these
+          representations transfer across tasks.
         </li>
         <li>
-          <strong>Disentangled & Rigid:</strong> In voting simulation, behavior is rigid and less steerable. This implies that behavioral simulation (e.g., voting) is encoded in a <span class="highlight">partially disentangled</span> latent subspace, one that is heavily constrained by RLHF alignment.
+          <strong>Correlated Subspaces:</strong>
+          Task-dependent steering effects imply differing correlations among latent
+          dimensions, motivating further study.
         </li>
         <li>
-          <strong>Model-Specific Geometry:</strong> The geometry of the ideological manifold differs across models. LLaMA-2 and LLaMA-3.1 show opposite steering effects, suggesting alignment can rotate or entangle these dimensions.
+          <strong>Model-Specific Geometry:</strong>
+          Models show opposite steering effects, reflecting distinct pretraining structures,
+          similar to patterns found in word embedding models.
         </li>
       </ul>
-      <p>
-        Ideology in LLMs functions less as a single, fixed dimension and more as a <span class="highlight">complex manifold</span> whose geometry depends on pretraining and alignment.
-      </p>
     </div>
+
 
     <div class="section conclusion">
       <h2>Conclusion</h2>
-      <p>We demonstrate that latent ideological representations in LLMs are functionally "real" and can be causally steered. Our key findings are:</p>
-      <ol>
-        <li><strong>Cross-Task Generalization:</strong> Ideological directions found via probes generalize to causally influence downstream tasks like bias detection and text rewriting.</li>
-        <li><strong>Disentangled Representations:</strong> We find a fundamental disjunction between <span class="highlight">ideological framing</span> (steerable) and <span class="highlight">behavioral simulation</span> (rigid), suggesting distinct latent dimensions.</li>
-        <li><strong>Asymmetric Effects:</strong> Pretraining and alignment create asymmetries in steering, complicating naive interventions.</li>
-        </V>
+      <p>Our results show that latent ideological directions both introduce
+        <span class="highlight">behavioral bias</span> and provide leverage for
+        <span class="highlight">model control</span>. Our key findings are:
+      </p>
+      <ul>
+        <li><strong>Cross-Task Generalization:</strong> Ideological directions found with linear probes generalize and influence model behaviors in downstream political reasoning tasks.</li>
+        <li><strong>Disentangled Representations:</strong> We find a disjunction between <span class="highlight">ideological framing</span> and <span class="highlight">behavioral simulation</span>, suggesting disentangled latent dimensions.</li>
+        <li><strong>Asymmetric Steering Effects:</strong> Pretraining and alignment might create asymmetries in these representations, complicating naive interventions.</li>
+      </ul>
     </div>
 
     <div class="section resources">
@@ -501,15 +509,15 @@
       <p>Scan the QR codes for the full paper, replication code, and dataset.</p>
       <div class="qr-container">
         <div class="qr-box">
-          <img src="qr-code.png" alt="QR Code for Paper">
-          <strong>Paper & Code</strong>
+          <img src="qr-code-code.png" alt="QR Code for Paper">
+          <div><strong>Paper & Code</strong></div>
         </div>
         <div class="qr-box">
-          <img src="qr-code.png" alt="QR Code for Dataset">
-          <strong>Dataset</strong>
+          <img src="qr-code-data.png" alt="QR Code for Dataset">
+          <div><strong>Dataset</strong></div>
         </div>
       </div>
-      <p style="text-align: center; font-size: 0.8em; margin-top: 1em; font-family: 'Montserrat', sans-serif;">
+      <p style="text-align: center; font-size: 0.8em; margin-top: 2em; font-family: 'Montserrat', sans-serif;">
         <a href="https://github.com/DotIN13/linear-political-llm">github.com/DotIN13/linear-political-llm</a>
         <br>
         <a href="http://huggingface.co/datasets/DotIN13/political-statements">huggingface.co/datasets/DotIN13/political-statements</a>
